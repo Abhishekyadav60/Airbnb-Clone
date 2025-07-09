@@ -13,6 +13,8 @@
       margin-right: 2rem;
       margin-top: 2rem;
       opacity: 0.7;
+      color: #000;
+      text-decoration: none;
     }
 
     .filter:hover {
@@ -37,53 +39,66 @@
       display: flex;
       align-items: center;
     }
+      /* Responsive Design */
+      @media (max-width: 768px) {
+        #filters {
+          display: flex;
+          flex-wrap: nowrap;
+          overflow-x: auto;
+        }
+        .tax-toggle {
+           display: none;
+        }
+    } 
+  
   </style>
 
     <div id="filters">
-      <div class="filter">
-       <div> <i class="fa-solid fa-fire"></i> </div>
-        <p>Tranding</p>
-      </div>
-      <div class="filter">
-        <div><i class="fa-solid fa-bed"></i> </div>
-         <p>Rooms</p>
-       </div>
-       <div class="filter">
-        <div><i class="fa-solid fa-mountain-city"></i> </div>
-         <p>Iconic Cities</p>
-       </div>
-       <div class="filter">
-        <div><i class="fa-solid fa-mountain"></i></div>
-         <p>Mountaines</p>
-       </div>
-       <div class="filter">
-        <div><i class="fa-brands fa-fort-awesome"></i></div>
-         <p>Castles</p>
-       </div>
-       <div class="filter">
-        <div><i class="fa-solid fa-person-swimming"></i></div>
-         <p>Amazing Pools</p>
-       </div>
-       <div class="filter">
-        <div><i class="fa-solid fa-campground"></i></div>
-         <p>Camping</p>
-       </div>
-       <div class="filter">
-        <div><i class="fa-solid fa-tractor"></i></div>
-         <p>Farms</p>
-       </div>
-       <div class="filter">
-        <div><i class="fa-solid fa-snowflake"></i></div>
-         <p>Arctic</p>
-       </div>
-       <div class="filter">
-        <div><i class="fa-solid fa-igloo"></i></div>
-         <p>Domes</p>
-       </div>
-       <div class="filter">
-        <div><i class="fa-solid fa-sailboat"></i></div>
-         <p>Boats</p>
-       </div>
+          <a href="/listings/category/Tranding"  class="filter">
+            <div> <i class="fa-solid fa-fire"></i> </div>
+             <p>Tranding</p>
+           </a>
+           <a  href="/listings/category/Rooms"  class="filter">
+             <div><i class="fa-solid fa-bed"></i> </div>
+              <p>Rooms</p>
+            </a>
+            <a  href="/listings/category/Iconic Cities"  class="filter">
+             <div><i class="fa-solid fa-mountain-city"></i> </div>
+              <p>Iconic Cities</p>
+            </a>
+            <a href="/listings/category/Mountains" class="filter">
+             <div><i class="fa-solid fa-mountain"></i></div>
+              <p>Mountaines</p>
+            </a>
+            <a  href="/listings/category/Castles" class="filter">
+             <div><i class="fa-brands fa-fort-awesome"></i></div>
+              <p>Castles</p>
+            </a>
+            <a  href="/listings/category/Amazing Pools"  class="filter">
+             <div><i class="fa-solid fa-person-swimming"></i></div>
+              <p>Amazing Pools</p>
+            </a>
+            <a  href="/listings/category/Caming"  class="filter">
+             <div><i class="fa-solid fa-campground"></i></div>
+              <p>Camping</p>
+            </a>
+            <a  href="/listings/category/Farms"  class="filter">
+             <div><i class="fa-solid fa-tractor"></i></div>
+              <p>Farms</p>
+            </a>
+            <a  href="/listings/category/Arctic"  class="filter">
+             <div><i class="fa-solid fa-snowflake"></i></div>
+              <p>Arctic</p>
+            </a>
+            <a  href="/listings/category/Domes"  class="filter">
+             <div><i class="fa-solid fa-igloo"></i></div>
+              <p>Domes</p>
+            </a>
+            <a  href="/listings/category/Boats"  class="filter">
+             <div><i class="fa-solid fa-sailboat"></i></div>
+              <p>Boats</p>
+            </a>
+      
 
        <div class="tax-toggle">
         <div class="form-check-reverse form-switch">
@@ -94,6 +109,9 @@
     </div>
 
     <div class="row row-cols-lg-3 row=cols-md-2 row-cols-sm-1 mt-3">
+      <% if (allListings.length === 0) { %>
+        <p>No records found</p>
+      <% } %>
         <% for(let listing of allListings) { %>
           <a href="/listings/<%= listing._id %>" class="listing-link">
             <div class="card col listing-card">
@@ -123,6 +141,7 @@
           }
         }
       });
+
     </script>
   </body> 
 

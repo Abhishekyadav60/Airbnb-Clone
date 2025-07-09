@@ -1,4 +1,4 @@
-<% layout('/layouts/boilerplate') -%>
+<% layout('/layouts/boilerplate.ejs') -%>
 <script> 
     const mapToken = "<%= process.env.MAP_TOKEN %>";
     const listing = <%- JSON.stringify(listing) %>;
@@ -85,11 +85,9 @@
             </div>
             <% } %>
     </div>
-    <div class="col-8 offset-3 mb-3">
-        <h3>Where you'll be</h3>
-        <div id="map"></div>
+    <div class="col-6 offset-3 mb-3">
+                    <h3>Where you'll be</h3>
+                    <div id="map"></div>
+                </div>
     </div>
-</div>
-
-<script src="/js/map.js"></script>
-
+    <script src="/js/map.js"></script>

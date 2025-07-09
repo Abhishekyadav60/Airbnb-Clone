@@ -9,6 +9,12 @@ module.exports.index = async (req, res) => {
     res.render("listings/index.ejs", { allListings });
   };
 
+module.exports.filtered = async (req, res) => {
+  const category = req.params.category
+  const allListings = await Listing.find({category})
+  res.render("listings/index.ejs",{allListings})
+}
+
   module.exports.renderNewForm = (req, res) => {
     res.render("listings/new.ejs");
   };
@@ -29,13 +35,13 @@ module.exports.showListing = async (req, res) => {
    res.render("listings/show.ejs", { listing });
 };
 
-module.exports.createListing = async (req, res, next) => {
-  let response = await geocodingClient
-  .forwardGeocode({
-    query: req.body.listing.location,
-    limit: 1
-  })
-    .send();
+module.exports.createListing = async (req,res,next) => {
+
+    let response = await geocodingClient.forwardGeocode({
+        query: req.body.listing.location,
+        limit: 1
+      })
+        .send()
    
     let url = req.file.path;
     let filename = req.file.filename;
@@ -44,8 +50,7 @@ module.exports.createListing = async (req, res, next) => {
     newListing.owner = req.user._id;
     newListing.image = {url, filename};
 
-    newListing.geometry = response.body.features[0].geometry;
-
+    newListing.geometry = response.body.features[0].geometry
     let savedListing = await newListing.save();
     console.log(savedListing);
     req.flash("success", "New Listing Created!");
