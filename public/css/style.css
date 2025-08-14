@@ -28,6 +28,9 @@ body {
     text-decoration: none;
     color: #222222;
 }
+ .f-info a{
+    color: #222222;
+ }
 
 .f-info-links a:hover {
     text-decoration: underline;
@@ -118,4 +121,34 @@ body {
 #map { 
     height: 400px;
     width: 80vh; 
+}
+
+
+
+@media (max-width: 768px) {
+    /* .show-img {
+        height: 20vh;
+    } */
+    #map { 
+        width: 70vh;  
+    }
+
+    .edit-btn {
+        width: 15% !important;
+    }
+}
+
+@media (max-width: 480px) {
+    .edit-btn {
+        width: 30% !important;
+    }
+
+    #map {
+        width: 150%;
+        height: 300px;
+    }
+
+    /* .inp-search {
+        border-radius: 25px;
+    } */
 }

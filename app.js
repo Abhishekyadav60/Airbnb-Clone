@@ -16,7 +16,7 @@ const passport = require("passport");
 const LocalStrategy = require("passport-local");
 const User = require("./models/user.js");
 
-const listingRouter = require("./routes/listing.js");
+const listingsRouter = require("./routes/listing.js");
 const reviewRouter = require("./routes/review.js");
 const userRouter = require("./routes/user.js");
 
@@ -37,6 +37,7 @@ async function main() {
 }
 
 //  ejs templating
+
 app.set("view engine", "ejs");
 app.set("views", path.join(__dirname, "views"));
 app.use(express.urlencoded({extended: true}));
@@ -91,7 +92,7 @@ app.use((req, res, next) => {
   });
 
 // Routes
-app.use("/listings", listingRouter);
+app.use("/listings", listingsRouter);
 app.use("/listings/:id/reviews", reviewRouter);
 app.use("/", userRouter);
 
@@ -104,7 +105,7 @@ app.all("*", (req, res, next) => {
 app.use((err, req, res, next) => {
   let {statusCode = 500, message = "Something went worng!"} = err;
   res.status(statusCode).render("error.ejs", { message });
-
+  next();
 });
 
 // Server start
