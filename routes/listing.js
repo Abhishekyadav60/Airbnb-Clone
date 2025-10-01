@@ -12,6 +12,7 @@ router.route("/")
 .get(wrapAsync(listingController.index))
 .post(isLoggedIn, upload.single("listing[image]"), validateListing, wrapAsync(listingController.createListing)); 
 
+
 router.get("/category/:category",listingController.filtered);
 
 //New Route
