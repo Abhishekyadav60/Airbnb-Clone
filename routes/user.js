@@ -25,12 +25,4 @@ router.route("/login")
 // Logout
 router.get("/logout", userController.logout);
 
-
-
-// Home route
-router.get("/", (req, res) => {
-  res.render("index.ejs"); // or index.ejs
-});
-
-
 module.exports = router;
